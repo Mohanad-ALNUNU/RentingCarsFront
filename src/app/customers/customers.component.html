@@ -1,0 +1,16 @@
+<p>customers works!</p>
+<div class="container">
+    <div class="row">
+      <div class="col-md-4" *ngFor="let customer of customers">
+        <div class="card mb-4">
+          <img [src]="customersImg" class="card-img-top" alt="Customer Image">
+          <div class="card-body">
+            <h5 class="card-title">{{ customer.firstName }}</h5>
+            <p class="card-text">{{ customer.lastName }}</p>
+            <p class="card-text">{{ customer.paymentMethod }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
