@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CustomerService } from '../customer.service';
+import { Customer } from './customer.model';
 
 @Component({
   selector: 'app-customers',
@@ -8,7 +9,7 @@ import { CustomerService } from '../customer.service';
 })
 export class CustomersComponent implements OnInit{
 
-  customers: any[] = [];
+  customers: Customer[] = [];
   customersImg: String = "https://media.sproutsocial.com/uploads/2017/02/10x-featured-social-media-image-size.png";
 
   constructor(private customerService: CustomerService){ }
@@ -27,11 +28,13 @@ export class CustomersComponent implements OnInit{
       }
     );
   }
-
-  getCustomerImg(customer:any){
-    if(customer.imgURL){
-      
+  getCustomerImg(customer: Customer): string {
+    if (customer.imageURL.length === 0) {
+      const nameWithPlus: string = customer.firstName.concat("+", customer.lastName);
+      const imageUrl: string = "https://ui-avatars.com/api/?name=".concat(nameWithPlus);
+      return imageUrl;
     }
+    return customer.imageURL;
   }
   
 
