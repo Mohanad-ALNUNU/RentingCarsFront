@@ -17,15 +17,22 @@ export class CustomersComponent implements OnInit{
     this.fetchCustomers();  
   }
 
-  fetchCustomers(){
+  fetchCustomers() {
     this.customerService.getAllCustomers().subscribe(
-      (data)=> {
+      (data) => {
         this.customers = data;
       },
       (error) => {
-          console.log('Error while fetching Customers: ', error);
+        console.log('Error fetching customers:', error);
       }
-    )
+    );
   }
+
+  getCustomerImg(customer:any){
+    if(customer.imgURL){
+      
+    }
+  }
+  
 
 }
