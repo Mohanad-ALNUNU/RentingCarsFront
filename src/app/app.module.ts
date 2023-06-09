@@ -8,6 +8,10 @@ import { CustomersComponent } from './customers/customers.component';
 import { VehicleComponent } from './vehicle/vehicle.component';
 import { ContractComponent } from './contract/contract.component';
 import { NavbarComponent } from './navbar/navbar.component';
+import { CustomerDialogComponent } from './add-customer-dialog/add-customer-dialog.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { CustomerFormComponent } from './add-customer-dialog/add-customer-form.component';
+import { MatDialogModule } from '@angular/material/dialog';
 
 @NgModule({
   declarations: [
@@ -15,12 +19,17 @@ import { NavbarComponent } from './navbar/navbar.component';
     CustomersComponent,
     VehicleComponent,
     ContractComponent,
-    NavbarComponent
+    NavbarComponent,
+    CustomerDialogComponent,
+    CustomerFormComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    ReactiveFormsModule,
+    FormsModule,
+    MatDialogModule
   ],
   providers: [],
   bootstrap: [AppComponent]
