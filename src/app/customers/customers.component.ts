@@ -46,14 +46,18 @@ export class CustomersComponent implements OnInit {
   deleteCustomer(id: string | null): void {
     if(id != null){
       console.log(this.customerService.deleteCustomer(id));
-      this.location.getState();  
+      setTimeout(() => {
+        this.ngOnInit();
+      }, 500); 
     }
   }
 
   updateCustomer(id: string | null, customer: Customer): void {
     if(id != null){
       console.log(this.customerService.updateCustomer(id, customer));
-      this.location.getState();  
+      setTimeout(() => {
+        this.ngOnInit();
+      }, 500);
     }
   }
 
@@ -62,6 +66,15 @@ export class CustomersComponent implements OnInit {
       panelClass: 'custom-dialog-container'
     };
     const dialogRef = this.dialog.open(CustomerDialogComponent, dialogConfig);
+    dialogRef.afterClosed().subscribe(isAdded => {
+      if(isAdded){
+        if(dialogRef){
+          setTimeout(() => {
+            this.ngOnInit();
+          }, 500);
+        }
+      }
+    })
   }  
 
   onEdit(customerId: string | null): void {
@@ -77,6 +90,7 @@ export class CustomersComponent implements OnInit {
           if (editedCustomer) {
             // User saved the edited customer
             this.updateCustomer(customerId, editedCustomer);
+            this.ngOnInit();
           }
         });
       },
@@ -98,8 +112,4 @@ export class CustomersComponent implements OnInit {
       }
     });
   }
-
-
-
-  
 }

@@ -1,0 +1,25 @@
+.dialog-overlay {
+  background-color: #fff;
+  display: block;
+  position: fixed;
+  z-index: 1050;
+  top: 40%;
+  left: 40%;
+  overflow: hidden;
+  outline: 0;
+}
+
+@media (max-width: 600px) 
+{
+.dialog-overlay {
+  width: 200px;
+  background-color: #fff;
+  display: block;
+  position: fixed;
+  z-index: 1050;
+  top: 40%;
+  left: 20%;
+  overflow: hidden;
+  outline: 0;
+}
+}

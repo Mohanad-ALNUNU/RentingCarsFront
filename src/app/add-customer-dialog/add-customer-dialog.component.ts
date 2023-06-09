@@ -28,7 +28,7 @@ export class CustomerDialogComponent {
         console.error('Failed to create customer:', error);
       }
     );
-    this.dialogRef.close();
+    this.dialogRef.close(true);
   }
 
   closeDialog() {
