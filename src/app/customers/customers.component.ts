@@ -5,6 +5,7 @@ import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { CustomerDialogComponent } from '../add-customer-dialog/add-customer-dialog.component';
 import { Location } from '@angular/common';
 import { DeleteCustomerConfirmationDialogComponent } from '../delete-confirmation-dialog/delete-customer-confirmation-dialog.component';
+import { EditCustomerDialogComponent } from '../edit-customer-dialog/edit-customer-dialog.component';
 
 
 @Component({
@@ -44,10 +45,15 @@ export class CustomersComponent implements OnInit {
 
   deleteCustomer(id: string | null): void {
     if(id != null){
-    console.log(this.customerService.deleteCustomer(id));
-    this.location.getState();  
-  }else{
-      console.log("ID is null!!");
+      console.log(this.customerService.deleteCustomer(id));
+      this.location.getState();  
+    }
+  }
+
+  updateCustomer(id: string | null, customer: Customer): void {
+    if(id != null){
+      console.log(this.customerService.updateCustomer(id, customer));
+      this.location.getState();  
     }
   }
 
@@ -58,6 +64,28 @@ export class CustomersComponent implements OnInit {
     const dialogRef = this.dialog.open(CustomerDialogComponent, dialogConfig);
   }  
 
+  onEdit(customerId: string | null): void {
+    // Call the HTTP GET request to fetch the customer data by ID
+    if(customerId)
+    this.customerService.getByIdCustomer(customerId).subscribe(
+      (customer: Customer) => {
+        const dialogRef = this.dialog.open(EditCustomerDialogComponent, {
+          data: customer // Pass the customer data to the dialog
+        });
+  
+        dialogRef.afterClosed().subscribe(editedCustomer => {
+          if (editedCustomer) {
+            // User saved the edited customer
+            this.updateCustomer(customerId, editedCustomer);
+          }
+        });
+      },
+      error => {
+        console.log('Error fetching customer data:', error);
+      }
+    );
+  }
+    
   onDelete(customerId: string | null): void {
     const dialogRef = this.dialog.open(DeleteCustomerConfirmationDialogComponent, {
       width: '300px'
