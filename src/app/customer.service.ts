@@ -27,21 +27,30 @@ export class CustomerService {
     return this.http.post<string>(this.apiURL, customer);
   }
   updateCustomer(id: string, customer: Customer): void {
-    this.http.put(`${this.updateURL}/${id}`, customer);
-  }
-  deleteCustomer(id: string): void {
-    this.http.delete(`${this.deleteURL}/${id}`).subscribe(
+    this.http.put(`${this.updateURL}/${id}`, customer).subscribe(
       () => {
-        console.log('Deletion successful'); // Optional: Log success message
+        console.log('Updated successful'); // Optional: Log success message
         // You can perform any additional actions after successful deletion here
       },
       (error) => {
-        console.log('Deletion failed', error); // Optional: Log error message
+        console.log('Update failed', error); // Optional: Log error message
         // You can handle the error case or display an error message here
       }
-    );
+    );;
   }
-  
+deleteCustomer(id: string): void {
+  this.http.delete(`${this.deleteURL}/${id}`).subscribe(
+    () => {
+      console.log('Deletion successful'); // Optional: Log success message
+      // You can perform any additional actions after successful deletion here
+    },
+    (error) => {
+      console.log('Deletion failed', error); // Optional: Log error message
+      // You can handle the error case or display an error message here
+    }
+  );
+}
+
   getByIdCustomer(id: string): Observable<Customer> {
     return this.http.get<Customer>(`${this.searchByIdURL}/${id}`);
   }

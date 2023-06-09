@@ -10,7 +10,7 @@
           <p class="card-text">{{ customer.birthDay }}</p>
           <p class="card-text">{{ customer.paymentMethod }}</p>
           <div class="d-flex justify-content-between">
-            <button type="button" class="btn btn-primary">Edit</button>
+            <button type="button" class="btn btn-primary" (click)="onEdit(customer.id)">Edit</button>
             <button type="button" class="btn btn-danger" (click)="onDelete(customer.id)">Delete</button>
           </div>
         </div>
