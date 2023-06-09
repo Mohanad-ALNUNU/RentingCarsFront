@@ -1,6 +1,57 @@
-.custom-dialog-container {  
+
+.dialog-overlay {
+  display: block;
+  position: fixed;
+  z-index: 1050;
+  top: 10%;
+  left: 40%;
+  overflow: hidden;
+  outline: 0;
+}
+
+.dialog-content {
   position: relative;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  width: auto;
+  margin: 0.5rem;
+  pointer-events: none;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  pointer-events: auto;
+  background-color: #fff;
+  background-clip: padding-box;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  border-radius: 0.3rem;
+  outline: 0;
+}
+  
+@media (max-width: 600px) 
+{
+
+  .dialog-overlay {
+    width: 300px;
+    display: block;
+    position: fixed;
+    z-index: 1050;
+    top: 10%;
+    left: 10%;
+    overflow: hidden;
+    outline: 0;
+  }
+  
+  .dialog-content {
+    position: relative;
+    width: auto;
+    margin: 0.5rem;
+    pointer-events: none;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    pointer-events: auto;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    border-radius: 0.3rem;
+    outline: 0;
+  }
 }
