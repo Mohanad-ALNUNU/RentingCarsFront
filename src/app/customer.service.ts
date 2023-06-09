@@ -17,23 +17,31 @@ export class CustomerService {
   private searchByNameURL = `${this.searchURL}/customername`;
   private searchByBirthDayURL = `${this.searchURL}/birthDay`;
   private searchByNameAndBirthDayURL = `${this.searchURL}/customernameBirthDay`;
+  
   constructor(private http: HttpClient) {}
 
   getAllCustomers():Observable<any>{
     return this.http.get<any>(this.allCustomers);
   }
-  getCustomer():Observable<any>{
-    return this.http.get<any>(this.allCustomers);
+  createCustomer(customer: Customer): Observable<string> {
+    return this.http.post<string>(this.apiURL, customer);
   }
-  createCustomer(customer: Customer): Observable<Customer> {
-    return this.http.post<Customer>(this.apiURL, customer);
+  updateCustomer(id: string, customer: Customer): void {
+    this.http.put(`${this.updateURL}/${id}`, customer);
   }
-  updateCustomer(id: string, customer: Customer): Observable<Customer> {
-    return this.http.put<Customer>(`${this.updateURL}/${id}`, customer);
+  deleteCustomer(id: string): void {
+    this.http.delete(`${this.deleteURL}/${id}`).subscribe(
+      () => {
+        console.log('Deletion successful'); // Optional: Log success message
+        // You can perform any additional actions after successful deletion here
+      },
+      (error) => {
+        console.log('Deletion failed', error); // Optional: Log error message
+        // You can handle the error case or display an error message here
+      }
+    );
   }
-  deleteCustomer(id: string): Observable<Customer> {
-    return this.http.get<Customer>(`${this.deleteURL}/${id}`);
-  }
+  
   getByIdCustomer(id: string): Observable<Customer> {
     return this.http.get<Customer>(`${this.searchByIdURL}/${id}`);
   }

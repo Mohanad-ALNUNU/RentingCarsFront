@@ -1,16 +1,20 @@
 <div class="container">
-    <div class="row">
-      <button type="button" class="btn btn-success m-3 p-3" (click)="showAddCustomerDialog()">Add New Customer</button>
-      <div class="col-md-4" *ngFor="let customer of customers">
-        <div class="card mb-4">
-          <img [src]="getCustomerImg(customer)" class="card-img-top" alt="Customer Image">
-          <div class="card-body">
-            <h5 class="card-title">{{ customer.firstName }}</h5>
-            <p class="card-text">{{ customer.lastName }}</p>
-            <p class="card-text">{{ customer.birthDay }}</p>
-            <p class="card-text">{{ customer.paymentMethod }}</p>
+  <div class="row">
+    <button type="button" class="btn btn-success m-3 p-3" (click)="showAddCustomerDialog()">Add New Customer</button>
+    <div class="col-md-4" *ngFor="let customer of customers">
+      <div class="card mb-4">
+        <img [src]="getCustomerImg(customer)" class="card-img-top" alt="Customer Image">
+        <div class="card-body">
+          <h5 class="card-title">{{ customer.firstName }}</h5>
+          <p class="card-text">{{ customer.lastName }}</p>
+          <p class="card-text">{{ customer.birthDay }}</p>
+          <p class="card-text">{{ customer.paymentMethod }}</p>
+          <div class="d-flex justify-content-between">
+            <button type="button" class="btn btn-primary">Edit</button>
+            <button type="button" class="btn btn-danger" (click)="onDelete(customer.id)">Delete</button>
           </div>
         </div>
       </div>
+    </div>
   </div>
-  
+</div>

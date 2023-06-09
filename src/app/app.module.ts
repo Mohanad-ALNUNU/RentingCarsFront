@@ -12,6 +12,8 @@ import { CustomerDialogComponent } from './add-customer-dialog/add-customer-dial
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CustomerFormComponent } from './add-customer-dialog/add-customer-form.component';
 import { MatDialogModule } from '@angular/material/dialog';
+import { DeleteCustomerConfirmationDialogComponent } from './delete-confirmation-dialog/delete-customer-confirmation-dialog.component';
+import { EditCustomerDialogComponent } from './edit-customer-dialog/edit-customer-dialog.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +23,9 @@ import { MatDialogModule } from '@angular/material/dialog';
     ContractComponent,
     NavbarComponent,
     CustomerDialogComponent,
-    CustomerFormComponent
+    CustomerFormComponent,
+    DeleteCustomerConfirmationDialogComponent,
+    EditCustomerDialogComponent
   ],
   imports: [
     BrowserModule,
