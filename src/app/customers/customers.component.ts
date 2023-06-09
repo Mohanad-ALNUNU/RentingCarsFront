@@ -3,6 +3,9 @@ import { CustomerService } from '../customer.service';
 import { Customer } from './customer.model';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { CustomerDialogComponent } from '../add-customer-dialog/add-customer-dialog.component';
+import { Location } from '@angular/common';
+import { DeleteCustomerConfirmationDialogComponent } from '../delete-confirmation-dialog/delete-customer-confirmation-dialog.component';
+
 
 @Component({
   selector: 'app-customers',
@@ -13,7 +16,7 @@ export class CustomersComponent implements OnInit {
 
   customers: Customer[] = [];
 
-  constructor(private customerService: CustomerService, private dialog: MatDialog) { }
+  constructor(private customerService: CustomerService, private dialog: MatDialog, private location: Location) { }
 
   ngOnInit(): void {
     this.fetchCustomers();
@@ -39,13 +42,36 @@ export class CustomersComponent implements OnInit {
     return customer.imageURL;
   }
 
+  deleteCustomer(id: string | null): void {
+    if(id != null){
+    console.log(this.customerService.deleteCustomer(id));
+    this.location.getState();  
+  }else{
+      console.log("ID is null!!");
+    }
+  }
+
   showAddCustomerDialog(): void {
     const dialogConfig: MatDialogConfig = {
-      position: {left: '200px', top: '-500px'},
+      panelClass: 'custom-dialog-container'
     };
-    
-    const dialogRef =   this.dialog.open(CustomerDialogComponent, dialogConfig);
+    const dialogRef = this.dialog.open(CustomerDialogComponent, dialogConfig);
+  }  
 
-}
+  onDelete(customerId: string | null): void {
+    const dialogRef = this.dialog.open(DeleteCustomerConfirmationDialogComponent, {
+      width: '300px'
+    });
 
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        // User confirmed deletion
+        this.deleteCustomer(customerId);
+      }
+    });
+  }
+
+
+
+  
 }
