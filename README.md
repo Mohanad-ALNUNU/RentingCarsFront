@@ -1,27 +1,28 @@
-# RentingVehiclesApp
+# Renting Vehicles App (Front-end)
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.0.3.
+This is the front-end portion of the Renting Vehicles App project. It is built using Angular.
 
-## Development server
+## Prerequisites
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+Make sure you have the following prerequisites installed:
 
-## Code scaffolding
+- Node.js (version 16.20.0)
+- Angular CLI (version 16.0.3)
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## Installation
 
-## Build
+1. Clone the repository: ```git clone https://github.com/Mohanad-ALNUNU/RentingCarsFront.git```
+2. Navigate to the project directory: ```cd renting-vehicles-app```
+3. Install the dependencies: ```npm install```
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+## Usage
 
-## Running unit tests
+1. Start the development server: ```ng serve```
+2. Open your browser and visit http://localhost:4200 to access the Renting Vehicles App.
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+## License
+This project is licensed under the [MIT License](https://github.com/Mohanad-ALNUNU/RentingCarsFront/blob/main/LICENSE).
 
-## Running end-to-end tests
+## Contributing
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+Contributions are welcome! If you have any improvements or bug fixes, please submit a pull request.
