@@ -8,6 +8,7 @@ Make sure you have the following prerequisites installed:
 
 - Node.js (version 16.20.0)
 - Angular CLI (version 16.0.3)
+- [Back-end project](https://github.com/Mohanad-ALNUNU/CarRenting-Mircoservices-back)
 
 ## Installation
 
@@ -17,8 +18,12 @@ Make sure you have the following prerequisites installed:
 
 ## Usage
 
-1. Start the development server: ```ng serve```
-2. Open your browser and visit http://localhost:4200 to access the Renting Vehicles App.
+1.Start the backend server by following the instructions in the [backend's README file](https://github.com/Mohanad-ALNUNU/CarRenting-Mircoservices-back/blob/master/README.md).
+2. Update the API URLs in the service files:
+   - Open the relevant service file (e.g., `src/app/customer.service.ts`, `src/app/vehicle.service.ts`).
+   - Update the API URLs with the appropriate backend server URLs.
+3. Start the development server: ```ng serve```
+4. Open your browser and visit http://localhost:4200 to access the Renting Vehicles App.
 
 ## License
 This project is licensed under the [MIT License](https://github.com/Mohanad-ALNUNU/RentingCarsFront/blob/main/LICENSE).
